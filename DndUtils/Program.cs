@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DndUtils
 {
@@ -6,6 +8,14 @@ namespace DndUtils
     {
         static void Main(string[] args)
         {
+            for (int i = 0; i < 4; i++)
+            {
+                List<int> t = StatRoller.RollStats();
+                foreach (int j in t)
+                    Console.WriteLine(j);
+                Console.WriteLine(t.Sum());
+                Console.WriteLine("\n");
+            }
             Console.WriteLine("Hello World!");
         }
     }
