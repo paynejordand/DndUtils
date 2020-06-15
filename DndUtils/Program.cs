@@ -16,8 +16,7 @@ namespace DndUtils
                     Console.WriteLine(j);
                 Console.WriteLine(t.Sum() + "\n");
             }
-            IRace raceTest = new HillDwarf();
-            
+            IRace abc = new HillDwarf();
         }
     }
 }

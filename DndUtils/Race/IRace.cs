@@ -63,5 +63,11 @@ namespace DndUtils.Race
         {
             get => _raceProficiencies;
         }
+
+        protected string _sourceBook;
+        public string SourceBook
+        {
+            get => _sourceBook;
+        }
     }
 }
