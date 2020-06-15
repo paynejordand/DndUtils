@@ -11,7 +11,7 @@ namespace DndUtils
         private static int RandomNumber()
         {
             var rand = new Random();
-            return Math.Max(1, rand.Next(6));
+            return rand.Next(1,6);
         }
 
         private static int FindMax(int num1, int num2, int num3, int num4, int num5, int num6)
@@ -61,7 +61,7 @@ namespace DndUtils
                 stat6.Sort();
 
                 stat1.RemoveAt(0);
-                stat1.RemoveAt(0);
+                stat2.RemoveAt(0);
                 stat3.RemoveAt(0);
                 stat4.RemoveAt(0);
                 stat5.RemoveAt(0);

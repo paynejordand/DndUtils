@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DndUtils.Race;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,10 +14,10 @@ namespace DndUtils
                 List<int> t = StatRoller.RollStats();
                 foreach (int j in t)
                     Console.WriteLine(j);
-                Console.WriteLine(t.Sum());
-                Console.WriteLine("\n");
+                Console.WriteLine(t.Sum() + "\n");
             }
-            Console.WriteLine("Hello World!");
+            IRace raceTest = new HillDwarf();
+            
         }
     }
 }
