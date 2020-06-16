@@ -34,26 +34,24 @@ namespace DndUtils.Class
                 "DEX",
                 "INT"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                4,
+                new HashSet<string>()
                 {
-                    4,
-                    new HashSet<string>()
-                    {
-                        "Acrobatics",
-                        "Athletics",
-                        "Deception",
-                        "Insight",
-                        "Intimidation",
-                        "Investigation",
-                        "Perception",
-                        "Performance",
-                        "Persuasion",
-                        "Sleight of Hand",
-                        "Stealth"
-                    }
+                    "Acrobatics",
+                    "Athletics",
+                    "Deception",
+                    "Insight",
+                    "Intimidation",
+                    "Investigation",
+                    "Perception",
+                    "Performance",
+                    "Persuasion",
+                    "Sleight of Hand",
+                    "Stealth"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

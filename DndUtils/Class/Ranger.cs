@@ -32,23 +32,21 @@ namespace DndUtils.Class
                 "STR",
                 "DEX"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                3,
+                new HashSet<string>()
                 {
-                    3,
-                    new HashSet<string>()
-                    {
-                        "Animal Handling",
-                        "Athletics",
-                        "Insight",
-                        "Investigation",
-                        "Nature",
-                        "Perception",
-                        "Stealth",
-                        "Survival"
-                    }
+                    "Animal Handling",
+                    "Athletics",
+                    "Insight",
+                    "Investigation",
+                    "Nature",
+                    "Perception",
+                    "Stealth",
+                    "Survival"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

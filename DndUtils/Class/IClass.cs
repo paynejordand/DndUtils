@@ -45,8 +45,8 @@ namespace DndUtils.Class
             get => _classSavingThrows;
         }
 
-        protected Dictionary<int, HashSet<string>> _classSkillsOptions;
-        public Dictionary<int, HashSet<string>> ClassSkillsOptions
+        protected KeyValuePair<int, HashSet<string>> _classSkillsOptions;
+        public KeyValuePair<int, HashSet<string>> ClassSkillsOptions
         {
             get => _classSkillsOptions;
         }
@@ -76,13 +76,10 @@ namespace DndUtils.Class
             output += $"Saving throws: \n";
             foreach (string s in ClassSavingThrows)
                 output += $"\t {s}\n";
-            output += $"Skill Options: \n";
-            foreach(KeyValuePair<int, HashSet<string>> kv in ClassSkillsOptions)
-            {
-                output += $"\t Choose {kv.Key}:\n";
-                foreach (string s in kv.Value)
+            output += $"Skill Options: \n" +
+                $"\t Choose {ClassSkillsOptions.Key}:\n";
+            foreach (string s in ClassSkillsOptions.Value)
                     output += $"\t\t {s}\n";
-            }
             output += $"Ability Score Increase at Levels: \n";
             foreach (int i in ClassASILevels)
                 output += $"\t{i} \n";

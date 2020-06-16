@@ -41,23 +41,21 @@ namespace DndUtils.Class
                 "INT",
                 "WIS"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                2,
+                new HashSet<string>()
                 {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "Arcana",
-                        "Animal Handling",
-                        "Insight",
-                        "Medicine",
-                        "Nature",
-                        "Perception",
-                        "Religion",
-                        "Survival"
-                    }
+                    "Arcana",
+                    "Animal Handling",
+                    "Insight",
+                    "Medicine",
+                    "Nature",
+                    "Perception",
+                    "Religion",
+                    "Survival"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

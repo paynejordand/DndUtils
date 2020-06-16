@@ -32,21 +32,19 @@ namespace DndUtils.Class
                 "CON",
                 "CHA"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                2,
+                new HashSet<string>()
                 {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "Arcana",
-                        "Deception",
-                        "Insight",
-                        "Intimidation",
-                        "Persuasion",
-                        "Religion"
-                    }
+                    "Arcana",
+                    "Deception",
+                    "Insight",
+                    "Intimidation",
+                    "Persuasion",
+                    "Religion"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

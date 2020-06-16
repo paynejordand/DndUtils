@@ -33,33 +33,31 @@ namespace DndUtils.Class
                 "DEX",
                 "CHA"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                3,
+                new HashSet<string>()
                 {
-                    3,
-                    new HashSet<string>()
-                    {
-                        "Acrobatics", 
-                        "Animal Handling", 
-                        "Arcana",
-                        "Athletics", 
-                        "Deception", 
-                        "History", 
-                        "Insight",
-                        "Intimidation", 
-                        "Investigation", 
-                        "Medicine", 
-                        "Nature",
-                        "Perception", 
-                        "Performance", 
-                        "Persuasion", 
-                        "Religion",
-                        "Sleight of Hand", 
-                        "Stealth", 
-                        "Survival"
-                    }
+                    "Acrobatics",
+                    "Animal Handling",
+                    "Arcana",
+                    "Athletics",
+                    "Deception",
+                    "History",
+                    "Insight",
+                    "Intimidation",
+                    "Investigation",
+                    "Medicine",
+                    "Nature",
+                    "Perception", 
+                    "Performance", 
+                    "Persuasion", 
+                    "Religion",
+                    "Sleight of Hand", 
+                    "Stealth", 
+                    "Survival"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

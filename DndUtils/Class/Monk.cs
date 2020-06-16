@@ -29,21 +29,19 @@ namespace DndUtils.Class
                 "STR",
                 "DEX"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                2,
+                new HashSet<string>()
                 {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "Acrobatics",
-                        "Athletics",
-                        "History",
-                        "Insight",
-                        "Religion",
-                        "Stealth"
-                    }
+                    "Acrobatics",
+                    "Athletics",
+                    "History",
+                    "Insight",
+                    "Religion",
+                    "Stealth"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,

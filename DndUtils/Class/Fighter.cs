@@ -33,23 +33,21 @@ namespace DndUtils.Class
                 "STR",
                 "CON"
             };
-            _classSkillsOptions = new Dictionary<int, HashSet<string>>()
-            {
+            _classSkillsOptions = new KeyValuePair<int, HashSet<string>>
+            (
+                2,
+                new HashSet<string>()
                 {
-                    2,
-                    new HashSet<string>()
-                    {
-                        "Acrobatics",
-                        "Animal Handling",
-                        "Athletics",
-                        "History",
-                        "Insight",
-                        "Intimidation",
-                        "Perception",
-                        "Survival"
-                    }
+                    "Acrobatics",
+                    "Animal Handling",
+                    "Athletics",
+                    "History",
+                    "Insight",
+                    "Intimidation",
+                    "Perception",
+                    "Survival"
                 }
-            };
+            );
             _classASILevels = new HashSet<int>()
             {
                 4,
