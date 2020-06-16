@@ -11,16 +11,27 @@ namespace DndUtils.Race
                     "Stout Halfling", "Human", "Dragonborn", "Forest Gnome",
                     "Rock Gnome", "Half Elf", "Half Orc", "Tiefling"};
 
-        public static HashSet<string> allAttributes = new HashSet<string> { "INT", "CHA", "WIS", "DEX", "CON", "STR"};
-
-        public static HashSet<string> allLanguages = new HashSet<string> { "Common", "Dwarvish", "Elvish", "Giant", "Gnomish",
-                           "Goblin", "Halfling", "Orc", "Abyssal", "Celestial",
-                           "Draconic", "Deep Speech", "Infernal", "Primordial",
-                           "Sylvan", "Undercommon"};
-
-        public static HashSet<string> artisanTools = new HashSet<string> { "Smith's Tools", "Brewer's Supplies",
-                           "Mason's Tools"};
-
+        public static IRace FactoryMethod(string pRace)
+        {
+            return pRace switch
+            {
+                "Hill Dwarf" => new HillDwarf(),
+                "Mountain Dwarf" => new MountainDwarf(),
+                "High Elf" => new HighElf(),
+                "Wood Elf" => new WoodElf(),
+                "Dark Elf" => new DarkElf(),
+                "Lightfoot Halfling" => new LightfootHalfling(),
+                "Stout Halfling" => new StoutHalfling(),
+                "Human" => new BaseHuman(),
+                "Dragonborn" => new BaseDragonborn(),
+                "Forest Gnome" => new ForestGnome(),
+                "Rock Gnome" => new RockGnome(),
+                "Half Elf" => new BaseHalfElf(),
+                "Half Orc" => new BaseHalfOrc(),
+                "Tiefling" => new BaseTiefling(),
+                _ => new IRace(),
+            };
+        }
 
         protected string _raceName;
         public string RaceName

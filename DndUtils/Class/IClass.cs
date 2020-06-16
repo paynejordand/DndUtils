@@ -9,12 +9,26 @@ namespace DndUtils.Class
         public static HashSet<string> allClasses = new HashSet<string> { "Barbarian", "Bard", "Cleric", "Druid", "Fighter",
                     "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer",
                     "Warlock", "Wizard"};
-        public static HashSet<string> allSkills = new HashSet<string> { "Acrobatics", "Animal Handling", "Arcana",
-                    "Athletics", "Deception", "History", "Insight",
-                    "Intimidation", "Investigation", "Medicine", "Nature",
-                    "Perception", "Performance", "Persuasion", "Religion",
-                    "Sleight of Hand", "Stealth", "Survival"};
 
+        public static IClass FactoryMethod(string pClass)
+        {
+            return pClass switch
+            {
+                "Barbarian" => new Barbarian(),
+                "Bard" => new Bard(),
+                "Cleric" => new Cleric(),
+                "Druid" => new Druid(),
+                "Fighter" => new Fighter(),
+                "Monk" => new Monk(),
+                "Paladin" => new Paladin(),
+                "Ranger" => new Ranger(),
+                "Rogue" => new Rogue(),
+                "Sorcerer" => new Sorcerer(),
+                "Warlock" => new Warlock(),
+                "Wizard" => new Wizard(),
+                _ => new IClass(),
+            };
+        }
 
         protected string _className;
         public string ClassName
