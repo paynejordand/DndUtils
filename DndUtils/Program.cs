@@ -1,4 +1,5 @@
-﻿using DndUtils.Race;
+﻿using DndUtils.Class;
+using DndUtils.Race;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace DndUtils
                     Console.WriteLine(j);
                 Console.WriteLine(t.Sum() + "\n");
             }
-            IRace abc = new HillDwarf();
+            IClass abc = new Rogue();
             Console.WriteLine(abc.ToString());
         }
     }
