@@ -12,8 +12,15 @@ namespace DndUtils.Race
         };
         protected string BaseElfSize = "Medium";
         protected int BaseElfSpeed = 30;
-        protected HashSet<string> BaseElfLanguages = new HashSet<string>() { "Common", "Elvish" };
+        protected HashSet<string> BaseElfLanguages = new HashSet<string>() 
+        { 
+            "Common", 
+            "Elvish"
+        };
         protected bool BaseElfDarkvision = true;
-        protected HashSet<string> BaseElfProficiencies = new HashSet<string>() { "Perception" };
+        protected HashSet<string> BaseElfProficiencies = new HashSet<string>() 
+        { 
+            "Perception"
+        };
     }
 }

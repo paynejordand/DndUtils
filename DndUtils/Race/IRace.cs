@@ -69,5 +69,24 @@ namespace DndUtils.Race
         {
             get => _sourceBook;
         }
+
+        public override string ToString()
+        {
+            string output = $"Race Name: {RaceName}\n" +
+                $"ASI: \n";
+            foreach (KeyValuePair<string, int> kv in RaceScoreBuff)
+                output += $"\t{kv.Key} : {kv.Value}\n";
+            output += $"Size: {RaceSize}\n" +
+                $"Speed: {RaceSpeed}\n" +
+                $"Darkvision: {Darkvision}\n" +
+                $"Proficiencies: \n";
+            foreach (string s in RaceProficiencies)
+                output += $"\t {s}\n";
+            output += $"Languages: \n";
+            foreach (string s in RaceLanguages)
+                output += $"\t{s}\n";
+            output += $"Source: {SourceBook}\n\n";
+            return output;
+        }
     }
 }

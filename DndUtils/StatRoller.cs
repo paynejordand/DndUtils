@@ -11,7 +11,7 @@ namespace DndUtils
         private static int RandomNumber()
         {
             var rand = new Random();
-            return rand.Next(1,6);
+            return rand.Next(1,7);
         }
 
         private static int FindMax(int num1, int num2, int num3, int num4, int num5, int num6)
