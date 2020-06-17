@@ -10,9 +10,31 @@ namespace DndUtils
     {
         public string PlayerName { get; set; }
 
-        public IRace PlayerRace { get; set; }
+        private IRace _playerRace;
+        public IRace PlayerRace
+        {
+            get => _playerRace;
+            set
+            {
+                _playerRace = value;
+                foreach (string prof in value.RaceProficiencies)
+                    PlayerProficiencies.Add(prof);
+                foreach (string lang in value.RaceLanguages)
+                    PlayerLanguages.Add(lang);
+            }
+        }
 
-        public IClass PlayerClass { get; set; }
+        private IClass _playerClass;
+        public IClass PlayerClass
+        {
+            get => _playerClass;
+            set
+            {
+                _playerClass = value;
+                foreach (string prof in value.ClassProficiencies)
+                    PlayerProficiencies.Add(prof);
+            }
+        }
 
         private int _playerLevel;
         public int PlayerLevel
@@ -36,6 +58,7 @@ namespace DndUtils
             }
         }
 
+        public HashSet<string> PlayerLanguages { get; set; }
         public HashSet<string> PlayerProficiencies { get; set; }
 
         private Dictionary<string, int> _playerAbilityScore;
@@ -49,7 +72,24 @@ namespace DndUtils
             }
         }
 
-        public CharacterModel() { }
+        public Dictionary<string, int> PlayerAbilityModifier
+        {
+            get
+            {
+                Dictionary<string, int> t = new Dictionary<string, int>();
+                foreach(KeyValuePair<string, int> kv in t)
+                {
+                    t.Add(kv.Key, (kv.Value - 10) / 2);
+                }
+                return t;
+            }
+        }
+
+        public CharacterModel() 
+        {
+            PlayerProficiencies = new HashSet<string>();
+            PlayerLanguages = new HashSet<string>();
+        }
 
         public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
         {

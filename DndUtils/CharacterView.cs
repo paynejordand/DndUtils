@@ -14,7 +14,7 @@ namespace DndUtils
         public void PrintSet<T>(HashSet<T> uSet)
         {
             foreach (T item in uSet)
-                Console.Write($"{item} ");
+                Console.Write($"{item}, ");
             Console.WriteLine();
         }
 
