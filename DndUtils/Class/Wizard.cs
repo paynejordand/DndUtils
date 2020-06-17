@@ -37,7 +37,7 @@ namespace DndUtils.Class
                 2,
                 new HashSet<string>()
                 {
-                    "Aracana",
+                    "Arcana",
                     "History",
                     "Insight",
                     "Investigation",

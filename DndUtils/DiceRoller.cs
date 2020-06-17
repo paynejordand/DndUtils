@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DndUtils
 {
-    static class StatRoller
+    static class DiceRoller
     {
         private static int RandomNumber()
         {
@@ -77,8 +77,16 @@ namespace DndUtils
                 totalSum = sum1 + sum2 + sum3 + sum4 + sum5 + sum6;
                 maxStat = FindMax(sum1, sum2, sum3, sum4, sum5, sum6);
             }
+            List<int> output = new List<int> { sum1, sum2, sum3, sum4, sum5, sum6 };
+            output.Sort();
+            output.Reverse();
+            return output;
+        }
 
-            return new List<int> { sum1, sum2, sum3, sum4, sum5, sum6 };
+        public static int RollDie(int maxValue)
+        {
+            var rand = new Random();
+            return rand.Next(1, maxValue + 1);
         }
     }
 }

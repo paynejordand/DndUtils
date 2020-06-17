@@ -11,15 +11,9 @@ namespace DndUtils
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                List<int> t = StatRoller.RollStats();
-                foreach (int j in t)
-                    Console.WriteLine(j);
-                Console.WriteLine(t.Sum() + "\n");
-            }
-            IClass abc = new Rogue();
-            Console.WriteLine(abc.ToString());
+            CharacterController cc = new CharacterController();
+            cc.RollCharacter();
+
         }
     }
 }
