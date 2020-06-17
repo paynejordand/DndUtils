@@ -13,6 +13,7 @@ namespace DndUtils
         {
             CharacterController cc = new CharacterController();
             cc.RollCharacter();
+
         }
     }
 }

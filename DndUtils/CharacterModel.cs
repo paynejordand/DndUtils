@@ -77,7 +77,7 @@ namespace DndUtils
             get
             {
                 Dictionary<string, int> t = new Dictionary<string, int>();
-                foreach(KeyValuePair<string, int> kv in t)
+                foreach (KeyValuePair<string, int> kv in PlayerAbilityScore)
                 {
                     t.Add(kv.Key, (kv.Value - 10) / 2);
                 }
@@ -100,6 +100,21 @@ namespace DndUtils
             PlayerHealth = pHealth;
             PlayerProficiencies = pProficiencies;
             PlayerAbilityScore = pAbility;
+        }
+
+        public override string ToString()
+        {
+            string output = $"{PlayerName}\n" +
+                $"{PlayerRace.RaceName} -- {PlayerClass.ClassName}\n" +
+                $"Level {PlayerLevel}\n" +
+                $"Health {PlayerHealth}\n" +
+                $"Proficiencies: \n";
+            foreach (string prof in PlayerProficiencies)
+                output += $"\t{prof}\n";
+            output += "Ability scores:\n";
+            foreach (KeyValuePair<string, int> kv in PlayerAbilityScore)
+                output += $"\t{kv.Key} -- {kv.Value} ({PlayerAbilityModifier[kv.Key]})\n";
+            return output;
         }
     }
 }
