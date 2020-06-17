@@ -203,14 +203,16 @@ namespace DndUtils
             }
 
             model.PlayerLevel = pLevel;
-            model.PlayerHealth = model.PlayerClass.ClassHitDie;
+            model.PlayerRolledHealth = model.PlayerClass.ClassHitDie;
         }
 
         private void GreaterLevel()
         {
             for (int i = 2; i <= model.PlayerLevel; i++)
             {
-                model.PlayerHealth += RollHitDie();
+                view.PrintLine($"Curr health {model.PlayerRolledHealth}");
+
+                model.PlayerRolledHealth += RollHitDie();
                 if (model.PlayerClass.ClassASILevels.Contains(i))
                     SpecialLevel();
             }
@@ -221,6 +223,8 @@ namespace DndUtils
             int health = DiceRoller.RollDie(model.PlayerClass.ClassHitDie);
             while (health == 1)
                 health = DiceRoller.RollDie(model.PlayerClass.ClassHitDie);
+            view.PrintLine($"Rolled health {health}");
+
             return health;
         }
 

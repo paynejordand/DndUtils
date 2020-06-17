@@ -47,16 +47,19 @@ namespace DndUtils
             }
         }
 
-        private int _playerHealth;
-        public int PlayerHealth
+        private int _playerRolledHealth;
+        public int PlayerRolledHealth
         {
-            get => _playerHealth;
+            get => _playerRolledHealth;
             set
             {
                 if (value > 0)
-                    _playerHealth = value;
+                    _playerRolledHealth = value;
             }
         }
+        public int PlayerTotalHealth => _playerRolledHealth + (PlayerAbilityModifier["CON"] * _playerLevel);
+
+
 
         public HashSet<string> PlayerLanguages { get; set; }
         public HashSet<string> PlayerProficiencies { get; set; }
@@ -91,13 +94,13 @@ namespace DndUtils
             PlayerLanguages = new HashSet<string>();
         }
 
-        public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
+        public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pRolledHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
         {
             PlayerName = pName;
             PlayerRace = pRace;
             PlayerClass = pClass;
             PlayerLevel = pLevel;
-            PlayerHealth = pHealth;
+            PlayerRolledHealth = pRolledHealth;
             PlayerProficiencies = pProficiencies;
             PlayerAbilityScore = pAbility;
         }
@@ -107,7 +110,7 @@ namespace DndUtils
             string output = $"{PlayerName}\n" +
                 $"{PlayerRace.RaceName} -- {PlayerClass.ClassName}\n" +
                 $"Level {PlayerLevel}\n" +
-                $"Health {PlayerHealth}\n" +
+                $"Health {PlayerTotalHealth}\n" +
                 $"Proficiencies: \n";
             foreach (string prof in PlayerProficiencies)
                 output += $"\t{prof}\n";
