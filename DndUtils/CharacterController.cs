@@ -240,10 +240,10 @@ namespace DndUtils
             if (pChoice.Equals("Feat"))
                 AddFeat();
             else if (pChoice.Equals("ASI"))
-                ASI(2);
+                ASI();
         }
 
-        private void ASI(int numberChoices)
+        private void ASI()
         {
             HashSet<string> pASIOptions = new HashSet<string>();
             foreach(KeyValuePair<string, int> kv in model.PlayerAbilityScore)
@@ -251,7 +251,7 @@ namespace DndUtils
                 if (kv.Value < 20)
                     pASIOptions.Add(kv.Key);
             }
-            for(int i = 0; i < numberChoices; i++)
+            for(int i = 0; i < 2; i++)
             {
                 view.PrintLine("What ability would you like to increase by 1?");
                 view.PrintSet(pASIOptions);
@@ -262,11 +262,15 @@ namespace DndUtils
                     view.PrintSet(pASIOptions);
                     pChoice = view.GetLine();
                 }
-                model.PlayerAbilityScore[pChoice] += 1;
+                AbilityIncrease(pChoice);
                 if (model.PlayerAbilityScore[pChoice].Equals(20))
                     pASIOptions.Remove(pChoice);
             }
-            
+        }
+
+        private void AbilityIncrease(string pAbility)
+        {
+            model.PlayerAbilityScore[pAbility] += 1;
         }
 
         private void AddFeat()
