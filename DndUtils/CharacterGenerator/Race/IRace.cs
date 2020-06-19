@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DndUtils.Race
+namespace DndUtils.CharacterGenerator.Race
 {
     class IRace
     {

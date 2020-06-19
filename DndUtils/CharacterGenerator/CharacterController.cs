@@ -1,10 +1,10 @@
-﻿using DndUtils.Class;
-using DndUtils.Race;
+﻿using DndUtils.CharacterGenerator.Race;
+using DndUtils.CharacterGenerator.Class;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DndUtils
+namespace DndUtils.CharacterGenerator
 {
     class CharacterController
     {
