@@ -17,10 +17,8 @@ namespace DndUtils.CharacterGenerator
             set
             {
                 _playerRace = value;
-                foreach (string prof in value.RaceProficiencies)
-                    PlayerProficiencies.Add(prof);
-                foreach (string lang in value.RaceLanguages)
-                    PlayerLanguages.Add(lang);
+                PlayerProficiencies.UnionWith(value.RaceProficiencies);
+                PlayerLanguages.UnionWith(value.RaceLanguages);
             }
         }
 
@@ -31,8 +29,7 @@ namespace DndUtils.CharacterGenerator
             set
             {
                 _playerClass = value;
-                foreach (string prof in value.ClassProficiencies)
-                    PlayerProficiencies.Add(prof);
+                PlayerProficiencies.UnionWith(value.ClassProficiencies);
             }
         }
 
