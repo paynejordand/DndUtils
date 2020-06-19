@@ -1,10 +1,10 @@
-﻿using DndUtils.Class;
-using DndUtils.Race;
+﻿using DndUtils.CharacterGenerator.Class;
+using DndUtils.CharacterGenerator.Race;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DndUtils
+namespace DndUtils.CharacterGenerator
 {
     class CharacterModel
     {
@@ -17,10 +17,8 @@ namespace DndUtils
             set
             {
                 _playerRace = value;
-                foreach (string prof in value.RaceProficiencies)
-                    PlayerProficiencies.Add(prof);
-                foreach (string lang in value.RaceLanguages)
-                    PlayerLanguages.Add(lang);
+                PlayerProficiencies.UnionWith(value.RaceProficiencies);
+                PlayerLanguages.UnionWith(value.RaceLanguages);
             }
         }
 
@@ -31,8 +29,7 @@ namespace DndUtils
             set
             {
                 _playerClass = value;
-                foreach (string prof in value.ClassProficiencies)
-                    PlayerProficiencies.Add(prof);
+                PlayerProficiencies.UnionWith(value.ClassProficiencies);
             }
         }
 
