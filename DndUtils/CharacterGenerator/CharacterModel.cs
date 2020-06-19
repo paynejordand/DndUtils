@@ -1,5 +1,5 @@
-﻿using DndUtils.Class;
-using DndUtils.Race;
+﻿using DndUtils.CharacterGenerator.Class;
+using DndUtils.CharacterGenerator.Race;
 using System;
 using System.Collections.Generic;
 using System.Text;
