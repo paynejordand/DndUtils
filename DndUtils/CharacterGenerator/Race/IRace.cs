@@ -1,36 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Reflection;
 
 namespace DndUtils.CharacterGenerator.Race
 {
     class IRace
     {
-        public static HashSet<string> allRaces = new HashSet<string> { "Hill Dwarf", "Mountain Dwarf", "High Elf",
-                    "Wood Elf", "Dark Elf", "Lightfoot Halfling",
-                    "Stout Halfling", "Human", "Dragonborn", "Forest Gnome",
-                    "Rock Gnome", "Half Elf", "Half Orc", "Tiefling"};
-
+        public static List<Type> allRaces = new List<Type>(typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace) && x.BaseType != typeof(IRace)).ToList()); 
         public static IRace FactoryMethod(string pRace)
         {
-            return pRace switch
+            var t = typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace)).ToList();
+            var types = typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace));
+            foreach (var x in types)
             {
-                "Hill Dwarf" => new HillDwarf(),
-                "Mountain Dwarf" => new MountainDwarf(),
-                "High Elf" => new HighElf(),
-                "Wood Elf" => new WoodElf(),
-                "Dark Elf" => new DarkElf(),
-                "Lightfoot Halfling" => new LightfootHalfling(),
-                "Stout Halfling" => new StoutHalfling(),
-                "Human" => new BaseHuman(),
-                "Dragonborn" => new BaseDragonborn(),
-                "Forest Gnome" => new ForestGnome(),
-                "Rock Gnome" => new RockGnome(),
-                "Half Elf" => new BaseHalfElf(),
-                "Half Orc" => new BaseHalfOrc(),
-                "Tiefling" => new BaseTiefling(),
-                _ => new IRace(),
-            };
+                if (x.Name.Equals(pRace))
+                    return (IRace)Activator.CreateInstance(x);
+            }
+            return new IRace();
         }
 
         protected string _raceName;

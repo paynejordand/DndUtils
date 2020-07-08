@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Gnome : IRace
+    class BaseGnome : IRace
     {
         protected Dictionary<string, int> BaseGnomeASI = new Dictionary<string, int>()
         {
@@ -21,7 +21,7 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseGnomeProficiencies = new HashSet<string>();
     }
 
-    class RockGnome : Gnome
+    class RockGnome : BaseGnome
     {
         public RockGnome()
         {
@@ -42,7 +42,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class ForestGnome : Gnome
+    class ForestGnome : BaseGnome
     {
         public ForestGnome()
         {

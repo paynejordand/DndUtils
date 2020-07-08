@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Halfling : IRace
+    class BaseHalfling : IRace
     {
         protected Dictionary<string, int> BaseHalflingASI = new Dictionary<string, int>()
         {
@@ -21,7 +21,7 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseHalflingProficiencies = new HashSet<string>();
     }
 
-    class StoutHalfling : Halfling
+    class StoutHalfling : BaseHalfling
     {
         public StoutHalfling()
         {
@@ -39,7 +39,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class LightfootHalfling : Halfling
+    class LightfootHalfling : BaseHalfling
     {
         public LightfootHalfling()
         {

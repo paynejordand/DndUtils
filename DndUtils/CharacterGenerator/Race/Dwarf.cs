@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Dwarf : IRace
+    class BaseDwarf : IRace
     {
         protected Dictionary<string, int> BaseDwarfASI = new Dictionary<string, int>()
         {
@@ -17,7 +17,7 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseDwarfProficiencies = new HashSet<string>() { "Battleaxe", "Handaxe", "Throwing hammer", "Warhammer" };
     }
 
-    class MountainDwarf : Dwarf
+    class MountainDwarf : BaseDwarf
     {
         public MountainDwarf()
         {
@@ -39,7 +39,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class HillDwarf : Dwarf
+    class HillDwarf : BaseDwarf
     {
         public HillDwarf()
         {

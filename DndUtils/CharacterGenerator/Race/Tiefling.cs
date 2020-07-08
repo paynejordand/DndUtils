@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Tiefling : IRace
+    class BaseTiefling : IRace
     {
         protected Dictionary<string, int> BaseTieflingASI = new Dictionary<string, int>()
         {
@@ -22,9 +22,9 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseTieflingProficiencies = new HashSet<string>();
     }
 
-    class BaseTiefling : Tiefling
+    class Tiefling : BaseTiefling
     {
-        public BaseTiefling()
+        public Tiefling()
         {
             _raceName = "Tiefling";
             _raceScoreBuff = new Dictionary<string, int>(BaseTieflingASI);

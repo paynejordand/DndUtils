@@ -4,8 +4,9 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Dragonborn : IRace
+    class BaseDragonborn : IRace
     {
+        
         protected Dictionary<string, int> BaseDragonbornASI = new Dictionary<string, int>()
         {
             {"STR", 2},
@@ -22,9 +23,9 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseDragonbornProficiencies = new HashSet<string>();
     }
 
-    class BaseDragonborn : Dragonborn
+    class Dragonborn : BaseDragonborn
     {
-        public BaseDragonborn()
+        public Dragonborn()
         {
             _raceName = "Dragonborn";
             _raceScoreBuff = new Dictionary<string, int>(BaseDragonbornASI);

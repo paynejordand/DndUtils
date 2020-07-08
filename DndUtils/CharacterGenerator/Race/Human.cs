@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Human : IRace
+    class BaseHuman : IRace
     {
         protected Dictionary<string, int> BaseHumanASI = new Dictionary<string, int>()
         {
@@ -25,9 +25,9 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseHumanProficiencies = new HashSet<string>();
     }
 
-    class BaseHuman : Human
+    class Human : BaseHuman
     {
-        public BaseHuman()
+        public Human()
         {
             _raceName = "Human";
             _raceScoreBuff = new Dictionary<string, int>(BaseHumanASI);
@@ -40,7 +40,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class VariantHuman : Human
+    class VariantHuman : BaseHuman
     {
         public VariantHuman()
         {

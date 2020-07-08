@@ -3,6 +3,7 @@ using DndUtils.CharacterGenerator.Class;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DndUtils.CharacterGenerator
 {
@@ -58,13 +59,13 @@ namespace DndUtils.CharacterGenerator
         private IRace ChooseRace()
         {
             view.PrintLine("What race would you like to play?");
-            view.PrintSet(IRace.allRaces);
-            string pRace = view.GetLine();
-            while (!IRace.allRaces.Contains(pRace))
+            view.PrintOptions(IRace.allRaces);
+            string pRace = view.GetLine().Replace(" ", "");
+            while (!IRace.allRaces.Any(x => x.Name == pRace))
             {
                 view.PrintLine("Selected race must be one of the following:");
-                view.PrintSet(IRace.allRaces);
-                pRace = view.GetLine();
+                view.PrintOptions(IRace.allRaces);
+                pRace = view.GetLine().Replace(" ", "");
             }
             return IRace.FactoryMethod(pRace);
         }
@@ -72,20 +73,20 @@ namespace DndUtils.CharacterGenerator
         private IClass ChooseClass()
         {
             view.PrintLine("What class would you like to play?");
-            view.PrintSet(IClass.allClasses);
-            string pClass = view.GetLine();
-            while (!IClass.allClasses.Contains(pClass))
+            view.PrintOptions(IClass.allClasses);
+            string pClass = view.GetLine().Replace(" ", "");
+            while (!IClass.allClasses.Any(x => x.Name == pClass))
             {
                 view.PrintLine("Choice must be one of the following:");
-                view.PrintSet(IClass.allClasses);
-                pClass = view.GetLine();
+                view.PrintOptions(IClass.allClasses);
+                pClass = view.GetLine().Replace(" ", "");
             }
             return IClass.FactoryMethod(pClass);
         }
 
         private void RaceSpecifics()
         {
-            if (model.PlayerRace is Dwarf)
+            if (model.PlayerRace is BaseDwarf)
             {
                 view.PrintLine("As a dwarf you can choose to have proficiency in one of the following:");
                 view.PrintSet(artisanTools);

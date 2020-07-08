@@ -1,33 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
+using System.Linq;
+
 
 namespace DndUtils.CharacterGenerator.Class
 {
     class IClass
     {
-        public static HashSet<string> allClasses = new HashSet<string> { "Barbarian", "Bard", "Cleric", "Druid", "Fighter",
-                    "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer",
-                    "Warlock", "Wizard"};
-
+        public static List<Type> allClasses = new List<Type>(typeof(IClass).Assembly.DefinedTypes.Where(x => typeof(IClass).IsAssignableFrom(x) && x != typeof(IClass)).ToList());
         public static IClass FactoryMethod(string pClass)
         {
-            return pClass switch
+            var types = typeof(IClass).Assembly.DefinedTypes.Where(x => typeof(IClass).IsAssignableFrom(x) && x != typeof(IClass));
+            foreach (var x in types)
             {
-                "Barbarian" => new Barbarian(),
-                "Bard" => new Bard(),
-                "Cleric" => new Cleric(),
-                "Druid" => new Druid(),
-                "Fighter" => new Fighter(),
-                "Monk" => new Monk(),
-                "Paladin" => new Paladin(),
-                "Ranger" => new Ranger(),
-                "Rogue" => new Rogue(),
-                "Sorcerer" => new Sorcerer(),
-                "Warlock" => new Warlock(),
-                "Wizard" => new Wizard(),
-                _ => new IClass(),
-            };
+                if (x.Name.Equals(pClass))
+                    return (IClass)Activator.CreateInstance(x);
+            }
+            return new IClass();
         }
 
         protected string _className;

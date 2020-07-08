@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class HalfOrc : IRace
+    class BaseHalfOrc : IRace
     {
         protected Dictionary<string, int> BaseHalfOrcASI = new Dictionary<string, int>()
         {
@@ -25,11 +25,11 @@ namespace DndUtils.CharacterGenerator.Race
         };
     }
 
-    class BaseHalfOrc : HalfOrc
+    class HalfOrc : BaseHalfOrc
     {
-        public BaseHalfOrc()
+        public HalfOrc()
         {
-            _raceName = "Half-Orc";
+            _raceName = "Half Orc";
             _raceScoreBuff = new Dictionary<string, int>(BaseHalfOrcASI);
             _raceSize = BaseHalfOrcSize;
             _raceSpeed = BaseHalfOrcSpeed;

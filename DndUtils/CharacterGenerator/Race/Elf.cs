@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class Elf : IRace
+    class BaseElf : IRace
     {
         protected Dictionary<string, int> BaseElfASI = new Dictionary<string, int>()
         {
@@ -24,7 +24,7 @@ namespace DndUtils.CharacterGenerator.Race
         };
     }
 
-    class WoodElf : Elf
+    class WoodElf : BaseElf
     {
         public WoodElf()
         {
@@ -48,7 +48,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class DarkElf : Elf
+    class DarkElf : BaseElf
     {
         public DarkElf()
         {
@@ -71,7 +71,7 @@ namespace DndUtils.CharacterGenerator.Race
         }
     }
 
-    class HighElf : Elf
+    class HighElf : BaseElf
     {
         public HighElf()
         {

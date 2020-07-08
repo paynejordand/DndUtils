@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DndUtils.CharacterGenerator.Race
 {
-    class HalfElf : IRace
+    class BaseHalfElf : IRace
     {
         protected Dictionary<string, int> BaseHalfElfASI = new Dictionary<string, int>()
         {
@@ -21,9 +21,9 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseHalfElfProficiencies = new HashSet<string>();
     }
 
-    class BaseHalfElf : HalfElf
+    class HalfElf : BaseHalfElf
     {
-        public BaseHalfElf()
+        public HalfElf()
         {
             _raceName = "Half-Elf";
             _raceScoreBuff = new Dictionary<string, int>(BaseHalfElfASI);
