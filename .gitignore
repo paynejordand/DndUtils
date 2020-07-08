@@ -352,6 +352,6 @@ MigrationBackup/
 # StyleCop and FXCop
 .editorconfig
 DndUtils/GlobalSuppressions.cs
-DndUtils/stylecop.js
-DndUtils/stylecop1.cs
-DndUtils/stylecop2.cs
+DndUtils/stylecop.json
+DndUtils/stylecop1.json
+DndUtils/stylecop2.json
