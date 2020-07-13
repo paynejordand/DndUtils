@@ -11,7 +11,6 @@ namespace DndUtils.CharacterGenerator.Race
         public static List<Type> allRaces = new List<Type>(typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace) && x.BaseType != typeof(IRace)).ToList()); 
         public static IRace FactoryMethod(string pRace)
         {
-            var t = typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace)).ToList();
             var types = typeof(IRace).Assembly.DefinedTypes.Where(x => typeof(IRace).IsAssignableFrom(x) && x != typeof(IRace));
             foreach (var x in types)
             {
