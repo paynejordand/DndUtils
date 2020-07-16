@@ -85,10 +85,13 @@ namespace DndUtils.CharacterGenerator
             }
         }
 
+        public HashSet<IFeat> PlayerFeats { get; set; }
+
         public CharacterModel() 
         {
             PlayerProficiencies = new HashSet<string>();
             PlayerLanguages = new HashSet<string>();
+            PlayerFeats = new HashSet<IFeat>();
         }
 
         public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pRolledHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
@@ -114,6 +117,9 @@ namespace DndUtils.CharacterGenerator
             output += "Ability scores:\n";
             foreach (KeyValuePair<string, int> kv in PlayerAbilityScore)
                 output += $"\t{kv.Key} -- {kv.Value} ({PlayerAbilityModifier[kv.Key]})\n";
+            output += "Feats:\n";
+            foreach (IFeat feat in PlayerFeats)
+                output += $"\t{feat.FeatName}\n";
             return output;
         }
     }

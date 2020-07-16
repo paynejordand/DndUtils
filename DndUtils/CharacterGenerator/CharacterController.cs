@@ -273,7 +273,94 @@ namespace DndUtils.CharacterGenerator
 
         private void AddFeat()
         {
-            view.PrintLine("Feats not available yet");
+            List<Type> featOptions = new List<Type>();
+            foreach (var t in IFeat.allFeats)
+            {
+                bool ProfPreReq = true;
+                bool ASPreReq = true;
+                bool ClassPreReq = true;
+                IFeat temp = IFeat.FactoryMethod(t.Name);
+                if(temp.FeatProficiencyPreReq.Count > 0)
+                {
+                    ProfPreReq = false;
+                    foreach (string prof in temp.FeatProficiencyPreReq)
+                    {
+                        if (model.PlayerProficiencies.Contains(prof))
+                        {
+                            ProfPreReq = true;
+                            break;
+                        }
+                    }
+                }
+                if(temp.FeatAbilityScorePreReq.Count > 0)
+                {
+                    ASPreReq = false;
+                    foreach (string ability in temp.FeatAbilityScorePreReq)
+                    {
+                        if(model.PlayerAbilityScore[ability] >= 13)
+                        {
+                            ASPreReq = true;
+                            break;
+                        }
+                    }
+                }
+                if(temp.FeatClassPreReq.Count > 0)
+                {
+                    ClassPreReq = false;
+                    if (temp.FeatClassPreReq.Contains(model.PlayerClass.ClassName))
+                        ClassPreReq = true;
+                }
+
+                if (ProfPreReq && ASPreReq && ClassPreReq && !model.PlayerFeats.Any(x => x.FeatName == temp.FeatName))
+                    featOptions.Add(t);
+            }
+
+            if(featOptions.Count == 0)
+            {
+                view.PrintLine("There are no feats available for this character. Letting the player increase abilities instead.");
+                ASI();
+                return;
+            }
+
+            view.PrintLine("What feat would you like to take?");
+            view.PrintOptions(featOptions);
+            string pFeat = view.GetLine().Replace(" ", "");
+            while (!featOptions.Any(x => x.Name == pFeat))
+            {
+                view.PrintLine("Choice must be one of the following:");
+                pFeat = view.GetLine().Replace(" ", "");
+            }
+
+            IFeat selectedFeat = IFeat.FactoryMethod(pFeat);
+            model.PlayerFeats.Add(selectedFeat);
+
+            if(selectedFeat.FeatAbilityScoreEffect.Count > 0)
+            {
+                HashSet<string> ASOptions = new HashSet<string>(selectedFeat.FeatAbilityScoreEffect);
+                foreach (string ability in ASOptions)
+                {
+                    if (model.PlayerAbilityScore[ability] >= 20)
+                        ASOptions.Remove(ability);
+                }
+                if(ASOptions.Count > 0)
+                {
+                    view.PrintLine("Which ability would you like to increase?");
+                    view.PrintSet(ASOptions);
+                    string pAbility = view.GetLine();
+                    while (!ASOptions.Contains(pAbility))
+                    {
+                        view.PrintLine("Choice must be one of the following:");
+                        view.PrintSet(ASOptions);
+                        pAbility = view.GetLine();
+                    }
+                    AbilityIncrease(pAbility);
+                }
+            }
+
+            if(selectedFeat.FeatProficiencyEffect.Count > 0)
+            {
+                model.PlayerProficiencies.UnionWith(selectedFeat.FeatProficiencyEffect);
+            }
         }
     }
 }
