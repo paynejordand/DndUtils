@@ -349,9 +349,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# StyleCop and FXCop
-.editorconfig
-DndUtils/GlobalSuppressions.cs
-DndUtils/stylecop.json
-DndUtils/stylecop1.json
-DndUtils/stylecop2.json
+# Conforming to SRD
+Secrets/
