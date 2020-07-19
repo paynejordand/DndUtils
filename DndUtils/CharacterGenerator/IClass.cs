@@ -70,7 +70,7 @@ namespace DndUtils.CharacterGenerator.Class
 
         public override string ToString()
         {
-            string output = $"Name: {ClassName}\n" +
+            string output = $"{ClassName}\n" +
                 $"Ability Preference: \n";
             foreach (string s in ClassAbilityOrder)
                 output += $"\t {s}\n";

@@ -1,5 +1,6 @@
 ﻿using DndUtils.CharacterGenerator.Class;
 using DndUtils.CharacterGenerator.Race;
+using DndUtils.CharacterGenerator.Feat;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -54,8 +55,29 @@ namespace DndUtils.CharacterGenerator
                     _playerRolledHealth = value;
             }
         }
+        private int _playerHealthBonus = 0;
+        public int PlayerHealthBonus
+        {
+            get => _playerHealthBonus;
+            set
+            {
+                if (value > 0)
+                    _playerHealthBonus = 0;
+            }
+        }
         public int PlayerTotalHealth => _playerRolledHealth + (PlayerAbilityModifier["CON"] * _playerLevel);
 
+        private int _playerSpeedBonus;
+        public int PlayerSpeedBonus
+        {
+            get => _playerSpeedBonus;
+            set
+            {
+                if (value > 0)
+                    _playerSpeedBonus = value;
+            }
+        }
+        public int PlayerSpeed => PlayerRace.RaceSpeed + PlayerSpeedBonus;
 
 
         public HashSet<string> PlayerLanguages { get; set; }
@@ -85,10 +107,13 @@ namespace DndUtils.CharacterGenerator
             }
         }
 
+        public HashSet<IFeat> PlayerFeats { get; set; }
+
         public CharacterModel() 
         {
             PlayerProficiencies = new HashSet<string>();
             PlayerLanguages = new HashSet<string>();
+            PlayerFeats = new HashSet<IFeat>();
         }
 
         public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pRolledHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
@@ -108,12 +133,19 @@ namespace DndUtils.CharacterGenerator
                 $"{PlayerRace.RaceName} -- {PlayerClass.ClassName}\n" +
                 $"Level {PlayerLevel}\n" +
                 $"Health {PlayerTotalHealth}\n" +
-                $"Proficiencies: \n";
+                $"Speed {PlayerSpeed}\n" +
+                $"Languages:\n";
+            foreach (string lang in PlayerLanguages)
+                output += $"\t{lang}\n";
+            output += $"Proficiencies: \n";
             foreach (string prof in PlayerProficiencies)
                 output += $"\t{prof}\n";
             output += "Ability scores:\n";
             foreach (KeyValuePair<string, int> kv in PlayerAbilityScore)
                 output += $"\t{kv.Key} -- {kv.Value} ({PlayerAbilityModifier[kv.Key]})\n";
+            output += "Feats:\n";
+            foreach (IFeat feat in PlayerFeats)
+                output += $"\t{feat.FeatName}\n";
             return output;
         }
     }

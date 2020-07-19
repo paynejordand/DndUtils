@@ -1,5 +1,6 @@
 ﻿using DndUtils.CharacterGenerator.Race;
 using DndUtils.CharacterGenerator.Class;
+using DndUtils.CharacterGenerator.Feat;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,22 +10,24 @@ namespace DndUtils.CharacterGenerator
 {
     class CharacterController
     {
-        private CharacterModel model;
-        private CharacterView view;
+        private readonly CharacterModel model;
+        private readonly CharacterView view;
 
-        private HashSet<string> allLanguages = new HashSet<string> { "Common", "Dwarvish", "Elvish", "Giant", "Gnomish",
+        private readonly HashSet<string> allLanguages = new HashSet<string> { "Common", "Dwarvish", "Elvish", "Giant", "Gnomish",
                            "Goblin", "Halfling", "Orc", "Abyssal", "Celestial",
                            "Draconic", "Deep Speech", "Infernal", "Primordial",
                            "Sylvan", "Undercommon"};
 
-        private HashSet<string> artisanTools = new HashSet<string> { "Smith's Tools", "Brewer's Supplies",
+        private readonly HashSet<string> artisanTools = new HashSet<string> { "Smith's Tools", "Brewer's Supplies",
                            "Mason's Tools"};
 
-        private HashSet<string> allSkills = new HashSet<string> { "Acrobatics", "Animal Handling", "Arcana",
+        private readonly HashSet<string> allSkills = new HashSet<string> { "Acrobatics", "Animal Handling", "Arcana",
                     "Athletics", "Deception", "History", "Insight",
                     "Intimidation", "Investigation", "Medicine", "Nature",
                     "Perception", "Performance", "Persuasion", "Religion",
                     "Sleight of Hand", "Stealth", "Survival"};
+
+        private int CurrentLevel = 1;
 
         public CharacterController()
         {
@@ -204,13 +207,14 @@ namespace DndUtils.CharacterGenerator
             }
 
             model.PlayerLevel = pLevel;
-            model.PlayerRolledHealth = model.PlayerClass.ClassHitDie;
+            model.PlayerRolledHealth = model.PlayerClass.ClassHitDie + model.PlayerHealthBonus;
         }
 
         private void GreaterLevel()
         {
             for (int i = 2; i <= model.PlayerLevel; i++)
             {
+                CurrentLevel++;
                 model.PlayerRolledHealth += RollHitDie();
                 if (model.PlayerClass.ClassASILevels.Contains(i))
                     SpecialLevel();
@@ -253,6 +257,7 @@ namespace DndUtils.CharacterGenerator
             {
                 view.PrintLine("What ability would you like to increase by 1?");
                 view.PrintSet(pASIOptions);
+                view.PrintDict(model.PlayerAbilityScore);
                 string pChoice = view.GetLine();
                 while (!pASIOptions.Contains(pChoice))
                 {
@@ -273,7 +278,167 @@ namespace DndUtils.CharacterGenerator
 
         private void AddFeat()
         {
-            view.PrintLine("Feats not available yet");
+            List<Type> featOptions = new List<Type>();
+            foreach (var t in IFeat.allFeats)
+            {
+                bool ProfPreReq = true;
+                bool ASPreReq = true;
+                bool ClassPreReq = true;
+                IFeat temp = IFeat.FactoryMethod(t.Name);
+                if(temp.FeatProficiencyPreReq.Count > 0)
+                {
+                    ProfPreReq = false;
+                    foreach (string prof in temp.FeatProficiencyPreReq)
+                    {
+                        if (model.PlayerProficiencies.Contains(prof))
+                        {
+                            ProfPreReq = true;
+                            break;
+                        }
+                    }
+                }
+                if(temp.FeatAbilityScorePreReq.Count > 0)
+                {
+                    ASPreReq = false;
+                    foreach (string ability in temp.FeatAbilityScorePreReq)
+                    {
+                        if(model.PlayerAbilityScore[ability] >= 13)
+                        {
+                            ASPreReq = true;
+                            break;
+                        }
+                    }
+                }
+                if(temp.FeatClassPreReq.Count > 0)
+                {
+                    ClassPreReq = false;
+                    if (temp.FeatClassPreReq.Contains(model.PlayerClass.ClassName))
+                        ClassPreReq = true;
+                }
+
+                if (ProfPreReq && ASPreReq && ClassPreReq && !model.PlayerFeats.Any(x => x.FeatName == temp.FeatName))
+                    featOptions.Add(t);
+            }
+
+            if(featOptions.Count == 0)
+            {
+                view.PrintLine("There are no feats available for this character. Letting the player increase abilities instead.");
+                ASI();
+                return;
+            }
+
+            view.PrintLine("What feat would you like to take?");
+            view.PrintOptions(featOptions);
+            string pFeat = view.GetLine().Replace(" ", "");
+            while (!featOptions.Any(x => x.Name == pFeat))
+            {
+                view.PrintLine("Choice must be one of the following:");
+                view.PrintOptions(featOptions);
+                pFeat = view.GetLine().Replace(" ", "");
+            }
+
+            IFeat selectedFeat = IFeat.FactoryMethod(pFeat);
+            model.PlayerFeats.Add(selectedFeat);
+
+            if(selectedFeat.FeatAbilityScoreEffect.Count > 0)
+            {
+                HashSet<string> ASOptions = new HashSet<string>(selectedFeat.FeatAbilityScoreEffect);
+                foreach (string ability in ASOptions)
+                {
+                    if (model.PlayerAbilityScore[ability] >= 20)
+                        ASOptions.Remove(ability);
+                }
+                if(ASOptions.Count > 1)
+                {
+                    view.PrintLine("Which ability would you like to increase?");
+                    view.PrintSet(ASOptions);
+                    view.PrintDict(model.PlayerAbilityScore);
+                    string pAbility = view.GetLine();
+                    while (!ASOptions.Contains(pAbility))
+                    {
+                        view.PrintLine("Choice must be one of the following:");
+                        view.PrintSet(ASOptions);
+                        pAbility = view.GetLine();
+                    }
+                    AbilityIncrease(pAbility);
+                    if (selectedFeat is Resilient)
+                        model.PlayerProficiencies.Add(pAbility);
+                }
+                else
+                {
+                    foreach (string prof in ASOptions)
+                        AbilityIncrease(prof);
+                }
+            }
+
+            if(selectedFeat.FeatProficiencyEffect.Count > 0)
+            {
+                model.PlayerProficiencies.UnionWith(selectedFeat.FeatProficiencyEffect);
+            }
+
+            if(selectedFeat is Linguist)
+            {
+                HashSet<string> languageOptions = new HashSet<string>(allLanguages.Except(model.PlayerLanguages));
+                view.PrintLine("With the Linguist feat you learn 3 languages.\n");
+                for(int i = 3; i > 0; i--)
+                {
+                    view.PrintLine($"You have {i} choices left.");
+                    view.PrintSet(languageOptions);
+                    string pLang = view.GetLine();
+                    while (!languageOptions.Contains(pLang))
+                    {
+                        view.PrintLine("Choice must be one of the following:");
+                        view.PrintSet(languageOptions);
+                        pLang = view.GetLine();
+                    }
+                    model.PlayerLanguages.Add(pLang);
+                    languageOptions.Remove(pLang);
+                }
+            }
+            else if (selectedFeat is Mobile)
+            {
+                model.PlayerSpeedBonus = 10;
+            }
+            else if (selectedFeat is Skilled)
+            {
+                HashSet<string> skillOptions = new HashSet<string>(allSkills.Except(model.PlayerProficiencies));
+                skillOptions.UnionWith(artisanTools.Except(model.PlayerProficiencies));
+                view.PrintLine("With Skilled you gain proficiency in 3 skills or tools of your choice.");
+                for (int i = 3; i > 0; i--)
+                {
+                    view.PrintLine($"You have {i} choices left.");
+                    view.PrintSet(skillOptions);
+                    string pSkill = view.GetLine();
+                    while (!skillOptions.Contains(pSkill))
+                    {
+                        view.PrintLine("Choice must be one of the following:");
+                        view.PrintSet(skillOptions);
+                        pSkill = view.GetLine();
+                    }
+                    model.PlayerProficiencies.Add(pSkill);
+                    skillOptions.Remove(pSkill);
+                }
+            }
+            else if (selectedFeat is Tough)
+            {
+                model.PlayerRolledHealth += (CurrentLevel * 2);
+                model.PlayerHealthBonus = 2;
+            }
+            else if (selectedFeat is WeaponMaster)
+            {
+                view.PrintLine("With Weapon Master you gain proficiency with 4 weapons of your choice.");
+                for (int i = 4; i > 0; i--)
+                {
+                    view.PrintLine($"You have {i} choices left.");
+                    string pSkill = view.GetLine();
+                    while (!model.PlayerProficiencies.Contains(pSkill))
+                    {
+                        view.PrintLine("You already have proficiency with that weapon.");
+                        pSkill = view.GetLine();
+                    }
+                    model.PlayerProficiencies.Add(pSkill);
+                }
+            }
         }
     }
 }
