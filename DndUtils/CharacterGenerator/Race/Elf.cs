@@ -24,53 +24,6 @@ namespace DndUtils.CharacterGenerator.Race
         };
     }
 
-    class WoodElf : BaseElf
-    {
-        public WoodElf()
-        {
-            _raceName = "Wood Elf";
-            _raceScoreBuff = new Dictionary<string, int>(BaseElfASI)
-            {
-                { "WIS", 1}
-            };
-            _raceSize = BaseElfSize;
-            _raceSpeed = 35;
-            _raceLanguages = BaseElfLanguages;
-            _darkvision = BaseElfDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseElfProficiencies)
-            {
-                "Longsword",
-                "Shortsword",
-                "Shortbow",
-                "Longbow"
-            };
-            _sourceBook = "Player's Handbook";
-        }
-    }
-
-    class DarkElf : BaseElf
-    {
-        public DarkElf()
-        {
-            _raceName = "Dark Elf";
-            _raceScoreBuff = new Dictionary<string, int>(BaseElfASI)
-            {
-                { "CHA", 1}
-            };
-            _raceSize = BaseElfSize;
-            _raceSpeed = BaseElfSpeed;
-            _raceLanguages = BaseElfLanguages;
-            _darkvision = BaseElfDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseElfProficiencies)
-            {
-                "Rapier",
-                "Shortsword",
-                "Hand crossbow"
-            };
-            _sourceBook = "Player's Handbook";
-        }
-    }
-
     class HighElf : BaseElf
     {
         public HighElf()
@@ -91,7 +44,6 @@ namespace DndUtils.CharacterGenerator.Race
                 "Shortbow",
                 "Longbow"
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 }

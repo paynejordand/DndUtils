@@ -36,22 +36,6 @@ namespace DndUtils.CharacterGenerator.Race
             _raceLanguages = BaseHumanLanguages;
             _darkvision = BaseHumanDarkvision;
             _raceProficiencies = new HashSet<string>(BaseHumanProficiencies);
-            _sourceBook = "Player's Handbook";
-        }
-    }
-
-    class VariantHuman : BaseHuman
-    {
-        public VariantHuman()
-        {
-            _raceName = "Variant Human";
-            _raceScoreBuff = new Dictionary<string, int>();
-            _raceSize = BaseHumanSize;
-            _raceSpeed = BaseHumanSpeed;
-            _raceLanguages = BaseHumanLanguages;
-            _darkvision = BaseHumanDarkvision;
-            _raceProficiencies = BaseHumanProficiencies;
-            _sourceBook = "Player's Handbook";
         }
     }
 }

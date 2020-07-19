@@ -17,28 +17,6 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseDwarfProficiencies = new HashSet<string>() { "Battleaxe", "Handaxe", "Throwing hammer", "Warhammer" };
     }
 
-    class MountainDwarf : BaseDwarf
-    {
-        public MountainDwarf()
-        {
-            _raceName = "Mountain Dwarf";
-            _raceScoreBuff = new Dictionary<string, int>(BaseDwarfASI)
-            {
-                {"STR", 2}
-            };
-            _raceSize = BaseDwarfSize;
-            _raceSpeed = BaseDwarfSpeed;
-            _raceLanguages = BaseDwarfLanguages;
-            _darkvision = BaseDwarfDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseDwarfProficiencies)
-            {
-                "Light armor",
-                "Heavy armor"
-            };
-            _sourceBook = "Player's Handbook";
-        }
-    }
-
     class HillDwarf : BaseDwarf
     {
         public HillDwarf()
@@ -52,8 +30,7 @@ namespace DndUtils.CharacterGenerator.Race
             _raceSpeed = BaseDwarfSpeed;
             _raceLanguages = BaseDwarfLanguages;
             _darkvision = BaseDwarfDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseDwarfProficiencies);
-            _sourceBook = "Player's Handbook";
+            _raceProficiencies = BaseDwarfProficiencies;
         }
     }
 }

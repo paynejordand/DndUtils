@@ -26,7 +26,7 @@ namespace DndUtils.CharacterGenerator.Class
         {
             get => _className;
         }
-        protected List<string> _classAbilityOrder;
+        protected List<string> _classAbilityOrder = new List<string>();
         public List<string> ClassAbilityOrder
         {
             get => _classAbilityOrder;
@@ -38,31 +38,31 @@ namespace DndUtils.CharacterGenerator.Class
             get => _classHitDie;
         }
 
-        protected HashSet<string> _classProficiencies;
+        protected HashSet<string> _classProficiencies = new HashSet<string>();
         public HashSet<string> ClassProficiencies
         {
             get => _classProficiencies;
         }
 
-        protected HashSet<string> _classSavingThrows;
+        protected HashSet<string> _classSavingThrows = new HashSet<string>();
         public HashSet<string> ClassSavingThrows
         {
             get => _classSavingThrows;
         }
 
-        protected KeyValuePair<int, HashSet<string>> _classSkillsOptions;
+        protected KeyValuePair<int, HashSet<string>> _classSkillsOptions = new KeyValuePair<int, HashSet<string>>();
         public KeyValuePair<int, HashSet<string>> ClassSkillsOptions
         {
             get => _classSkillsOptions;
         }
 
-        protected HashSet<int> _classASILevels;
+        protected HashSet<int> _classASILevels = new HashSet<int>();
         public HashSet<int> ClassASILevels
         {
             get => _classASILevels;
         }
 
-        protected string _sourceBook;
+        protected string _sourceBook = "Player's Handbook";
         public string SourceBook
         {
             get => _sourceBook;
@@ -142,7 +142,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -208,7 +207,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -259,7 +257,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -323,7 +320,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -380,7 +376,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -430,7 +425,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -484,7 +478,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -539,7 +532,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -600,7 +592,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -653,7 +644,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -704,7 +694,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 
@@ -757,7 +746,6 @@ namespace DndUtils.CharacterGenerator.Class
                 16,
                 19
             };
-            _sourceBook = "Player's Handbook";
         }
     }
 }

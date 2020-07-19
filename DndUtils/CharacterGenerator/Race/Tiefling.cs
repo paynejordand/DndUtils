@@ -33,7 +33,6 @@ namespace DndUtils.CharacterGenerator.Race
             _raceLanguages = BaseTieflingLanguages;
             _darkvision = BaseTieflingDarkvision;
             _raceProficiencies = new HashSet<string>(BaseTieflingProficiencies);
-            _sourceBook = "Player's Handbook";
         }
     }
 }
