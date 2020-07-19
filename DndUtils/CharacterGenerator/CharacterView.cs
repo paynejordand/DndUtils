@@ -27,6 +27,13 @@ namespace DndUtils.CharacterGenerator
             Console.WriteLine();
         }
 
+        public void PrintDict(Dictionary<string, int> uDict)
+        {
+            foreach (KeyValuePair<string, int> kv in uDict)
+                Console.WriteLine($"{kv.Key} -- {kv.Value}");
+            Console.WriteLine();
+        }
+
         string AddSpacesToSentence(string text)
         {
             if (string.IsNullOrWhiteSpace(text))
