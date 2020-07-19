@@ -21,24 +21,6 @@ namespace DndUtils.CharacterGenerator.Race
         protected HashSet<string> BaseHalflingProficiencies = new HashSet<string>();
     }
 
-    class StoutHalfling : BaseHalfling
-    {
-        public StoutHalfling()
-        {
-            _raceName = "Stout Halfling";
-            _raceScoreBuff = new Dictionary<string, int>(BaseHalflingASI)
-            {
-                {"CON", 1}
-            };
-            _raceSize = BaseHalflingSize;
-            _raceSpeed = BaseHalflingSpeed;
-            _raceLanguages = BaseHalflingLanguages;
-            _darkvision = BaseHalflingDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseHalflingProficiencies);
-            _sourceBook = "Player's Handbook";
-        }
-    }
-
     class LightfootHalfling : BaseHalfling
     {
         public LightfootHalfling()
@@ -53,7 +35,6 @@ namespace DndUtils.CharacterGenerator.Race
             _raceLanguages = BaseHalflingLanguages;
             _darkvision = BaseHalflingDarkvision;
             _raceProficiencies = new HashSet<string>(BaseHalflingProficiencies);
-            _sourceBook = "Player's Handbook";
         }
     }
 }

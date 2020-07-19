@@ -32,7 +32,6 @@ namespace DndUtils.CharacterGenerator.Race
             _raceLanguages = BaseHalfElfLanguages;
             _darkvision = BaseHalfElfDarkvision;
             _raceProficiencies = new HashSet<string>(BaseHalfElfProficiencies);
-            _sourceBook = "Player's Handbook";
         }
     }
 }

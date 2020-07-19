@@ -79,6 +79,7 @@ namespace DndUtils.CharacterGenerator
         }
         public int PlayerSpeed => PlayerRace.RaceSpeed + PlayerSpeedBonus;
 
+        public int PlayerLeveling { get; set; } = 1;
 
         public HashSet<string> PlayerLanguages { get; set; }
         public HashSet<string> PlayerProficiencies { get; set; }

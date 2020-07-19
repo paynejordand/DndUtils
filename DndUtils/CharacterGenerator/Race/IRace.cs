@@ -27,7 +27,7 @@ namespace DndUtils.CharacterGenerator.Race
             get => _raceName;
         }
 
-        protected Dictionary<string, int> _raceScoreBuff;
+        protected Dictionary<string, int> _raceScoreBuff = new Dictionary<string, int>();
         public Dictionary<string, int> RaceScoreBuff
         {
             get => _raceScoreBuff;
@@ -45,7 +45,7 @@ namespace DndUtils.CharacterGenerator.Race
             get => _raceSpeed;
         }
 
-        protected HashSet<string> _raceLanguages;
+        protected HashSet<string> _raceLanguages = new HashSet<string>();
         public HashSet<string> RaceLanguages
         {
             get => _raceLanguages;
@@ -57,13 +57,13 @@ namespace DndUtils.CharacterGenerator.Race
             get => _darkvision;
         }
 
-        protected HashSet<string> _raceProficiencies;
+        protected HashSet<string> _raceProficiencies = new HashSet<string>();
         public HashSet<string> RaceProficiencies
         {
             get => _raceProficiencies;
         }
 
-        protected string _sourceBook;
+        protected string _sourceBook = "Player's Handbook";
         public string SourceBook
         {
             get => _sourceBook;

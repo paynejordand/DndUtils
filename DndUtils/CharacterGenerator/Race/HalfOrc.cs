@@ -36,7 +36,6 @@ namespace DndUtils.CharacterGenerator.Race
             _raceLanguages = BaseHalfOrcLanguages;
             _darkvision = BaseHalfOrcDarkvision;
             _raceProficiencies = new HashSet<string>(BaseHalfOrcProficiencies);
-            _sourceBook = "Player's Handbook";
         }
     }
 }

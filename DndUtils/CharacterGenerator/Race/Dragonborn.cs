@@ -33,8 +33,7 @@ namespace DndUtils.CharacterGenerator.Race
             _raceSpeed = BaseDragonbornSpeed;
             _raceLanguages = BaseDragonbornLanguages;
             _darkvision = BaseDragonbornDarkvision;
-            _raceProficiencies = new HashSet<string>(BaseDragonbornProficiencies);
-            _sourceBook = "Player's Handbook";
+            _raceProficiencies = BaseDragonbornProficiencies;
         }
     }
 }
