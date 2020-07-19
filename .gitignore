@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 
 # Conforming to SRD
-Secrets/
+DndUtils/Secrets/
