@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using DndUtils.Secrets;
+
 
 namespace DndUtils.CharacterGenerator
 {
@@ -341,11 +341,12 @@ namespace DndUtils.CharacterGenerator
 
             if(selectedFeat.FeatAbilityScoreEffect.Count > 0)
             {
-                HashSet<string> ASOptions = new HashSet<string>(selectedFeat.FeatAbilityScoreEffect);
-                foreach (string ability in ASOptions)
+                HashSet<string> ASChecker = new HashSet<string>(selectedFeat.FeatAbilityScoreEffect);
+                HashSet<string> ASOptions = new HashSet<string>();
+                foreach (string ability in ASChecker)
                 {
-                    if (model.PlayerAbilityScore[ability] >= 20)
-                        ASOptions.Remove(ability);
+                    if (model.PlayerAbilityScore[ability] < 20)
+                        ASOptions.Add(ability);
                 }
                 if(ASOptions.Count > 1)
                 {
@@ -360,8 +361,6 @@ namespace DndUtils.CharacterGenerator
                         pAbility = view.GetLine();
                     }
                     AbilityIncrease(pAbility);
-                    if (selectedFeat is Resilient)
-                        model.PlayerProficiencies.Add(pAbility);
                 }
                 else
                 {
@@ -376,7 +375,7 @@ namespace DndUtils.CharacterGenerator
             }
 
             if (selectedFeat.FeatExtraEffects)
-                selectedFeat.ExtraEffects(this.model, this.view);
+                selectedFeat.FeatApplyExtraEffects(this.model, this.view);
         }
     }
 }
