@@ -13,8 +13,9 @@ namespace DndUtils
         {
             CharacterController cc = new CharacterController();
             cc.RollCharacter();
-            Console.WriteLine("Press enter to close");
-            Console.ReadLine();
+
+            cc = new CharacterController();
+            cc.RandomCharacter(5, "Random");
         }
     }
 }

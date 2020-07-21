@@ -30,6 +30,7 @@ namespace DndUtils.CharacterGenerator
             set
             {
                 _playerClass = value;
+                PlayerProficiencies.UnionWith(value.ClassSavingThrows);
                 PlayerProficiencies.UnionWith(value.ClassProficiencies);
             }
         }
@@ -81,8 +82,8 @@ namespace DndUtils.CharacterGenerator
 
         public int PlayerLeveling { get; set; } = 1;
 
-        public HashSet<string> PlayerLanguages { get; set; }
-        public HashSet<string> PlayerProficiencies { get; set; }
+        public HashSet<string> PlayerLanguages { get; set; } = new HashSet<string>();
+        public HashSet<string> PlayerProficiencies { get; set; } = new HashSet<string>();
 
         private Dictionary<string, int> _playerAbilityScore;
         public Dictionary<string, int> PlayerAbilityScore
@@ -108,14 +109,9 @@ namespace DndUtils.CharacterGenerator
             }
         }
 
-        public HashSet<IFeat> PlayerFeats { get; set; }
+        public HashSet<IFeat> PlayerFeats { get; set; } = new HashSet<IFeat>();
 
-        public CharacterModel() 
-        {
-            PlayerProficiencies = new HashSet<string>();
-            PlayerLanguages = new HashSet<string>();
-            PlayerFeats = new HashSet<IFeat>();
-        }
+        public CharacterModel() { }
 
         public CharacterModel(string pName, IRace pRace, IClass pClass, int pLevel, int pRolledHealth, HashSet<string> pProficiencies, Dictionary<string, int> pAbility)
         {

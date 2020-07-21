@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-
 namespace DndUtils.CharacterGenerator.Feat
 {
     class IFeat
@@ -74,7 +73,7 @@ namespace DndUtils.CharacterGenerator.Feat
             get => _featExtraEffects;
         }
 
-        public void ExtraEffects(CharacterModel model, CharacterView view) { }
+        public virtual void FeatApplyExtraEffects(CharacterModel model, CharacterView view) { }
 
         public override string ToString()
         {
