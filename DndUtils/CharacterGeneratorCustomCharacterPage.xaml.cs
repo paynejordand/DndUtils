@@ -334,6 +334,7 @@ namespace DndUtilsGUI
                 if (ASICount > 0)
                 {
                     this.NavigationService.Navigate(new CharacterGeneratorASIPage(cc, ASICount));
+                    return;
                 }
             }
             // navigate to final screen
