@@ -1,0 +1,100 @@
+﻿<Window x:Class="DndUtils.PlayerSheetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DndUtils"
+        mc:Ignorable="d"
+        Title="PlayerSheetHome" Height="1056" Width="816">
+    <Grid>
+        <ScrollViewer>
+            <Canvas Height="1056" Width="816">
+                <ScrollBar Visibility="Visible"/>
+                <Image Source="CharacterSheet.jpg" Height="1056" Width="816"/>
+                <TextBlock Name="PlayerName" Height="30" TextWrapping="Wrap" Width="194" Canvas.Left="68" Canvas.Top="79"/>
+                <TextBlock Name="ClassLevel" Height="21" TextWrapping="Wrap" Width="127" Canvas.Left="359" Canvas.Top="61"/>
+                <TextBlock Name="Race" Height="26" TextWrapping="Wrap" Width="127" Canvas.Left="358" Canvas.Top="93"/>
+                <TextBlock Name="Init" Height="43" TextWrapping="Wrap" TextAlignment="Center"  Width="52" Canvas.Left="380" Canvas.Top="193"/>
+                <TextBlock Name="Speed" Height="43" TextWrapping="Wrap" TextAlignment="Center" Width="52" Canvas.Left="458" Canvas.Top="193"/>
+                <TextBlock Name="MaxHP" Height="14" TextWrapping="Wrap" TextAlignment="Center" Width="52" Canvas.Left="421.5" Canvas.Top="266"/>
+                <TextBlock Name="CurrentHP" Height="36" TextWrapping="Wrap" TextAlignment="Center" Width="104" Canvas.Left="359" Canvas.Top="286.96"/>
+                <TextBlock Name="Feats" Height="646" TextWrapping="Wrap" Width="216" Canvas.Left="554" Canvas.Top="180.05"/>
+                <TextBlock Name="OtherProfs" Height="142" TextWrapping="Wrap" Width="212" Canvas.Left="50" Canvas.Top="864.96"/>
+
+                <TextBlock Name="StrScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="291"/>
+                <TextBlock Name="StrMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="263"/>
+                <TextBlock Name="DexScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="381"/>
+                <TextBlock Name="DexMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="356"/>
+                <TextBlock Name="ConScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="472"/>
+                <TextBlock Name="ConMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="447"/>
+                <TextBlock Name="IntScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="564.05"/>
+                <TextBlock Name="IntMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="538.05"/>
+                <TextBlock Name="WisScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="654"/>
+                <TextBlock Name="WisMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="630"/>
+                <TextBlock Name="ChaScore" Height="32" TextWrapping="Wrap" Width="67" TextAlignment="Center" Canvas.Left="50" Canvas.Top="745"/>
+                <TextBlock Name="ChaMod" Height="18" TextWrapping="Wrap" Width="32" TextAlignment="Center" Canvas.Left="68" Canvas.Top="721"/>
+
+                <Rectangle Name="StrSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137.5" Canvas.Top="269.5" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Ellipse Name="Athletics" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="282.5" Visibility="Hidden"/>
+                <Rectangle Name="DexSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137" Canvas.Top="359" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Ellipse Name="Acrobatics" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="373.5" Visibility="Hidden"/>
+                <Ellipse Name="SleightOfHand" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="386" Visibility="Hidden"/>
+                <Ellipse Name="Stealth" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="398.5" Visibility="Hidden"/>
+                <Rectangle Name="ConSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137" Canvas.Top="450" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Rectangle Name="IntSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137.5" Canvas.Top="541.5" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Ellipse Name="Arcana" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="555.5" Visibility="Hidden"/>
+                <Ellipse Name="Hisory" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="568" Visibility="Hidden"/>
+                <Ellipse Name="Investigation" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="580.5" Visibility="Hidden"/>
+                <Ellipse Name="Nature" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="593" Visibility="Hidden"/>
+                <Ellipse Name="Religion" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="606" Visibility="Hidden"/>
+                <Rectangle Name="WisSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137" Canvas.Top="632" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Ellipse Name="AnimalHandling" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="646" Visibility="Hidden"/>
+                <Ellipse Name="Insight" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="659" Visibility="Hidden"/>
+                <Ellipse Name="Medicine" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="671.5" Visibility="Hidden"/>
+                <Ellipse Name="Perception" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="684" Visibility="Hidden"/>
+                <Ellipse Name="Survival" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="697" Visibility="Hidden"/>
+                <Rectangle Name="ChaSave" Height="8" Stroke="Black" Width="8" RenderTransformOrigin="0.5,0.5" Fill="Black" Canvas.Left="137" Canvas.Top="723" Visibility="Hidden">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <Ellipse Name="Deception" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="737" Visibility="Hidden"/>
+                <Ellipse Name="Intimidation" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="749.5" Visibility="Hidden"/>
+                <Ellipse Name="Performance" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="762.5" Visibility="Hidden"/>
+                <Ellipse Name="Persuasion" Height="8" Stroke="Black" Width="8" Fill="Black" Canvas.Left="137.5" Canvas.Top="775" Visibility="Hidden"/>
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</Window>

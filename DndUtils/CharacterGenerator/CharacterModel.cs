@@ -32,6 +32,7 @@ namespace DndUtils.CharacterGenerator
                 _playerClass = value;
                 PlayerProficiencies.UnionWith(value.ClassSavingThrows);
                 PlayerProficiencies.UnionWith(value.ClassProficiencies);
+                PlayerRolledHealth = value.ClassHitDie;
             }
         }
 
