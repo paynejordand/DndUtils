@@ -3,13 +3,6 @@ A collection of utilities for use in the most recent edition of one of the most 
 ## What it does
 1. Creates a character with a user selected race, class, and level from the most recent ruleset. Calculates health, abilitiy scores, proficiencies, and race/class specific choices.
 2. Select a feat instead of ability score increase at specified levels.
-3. Create a random character at a specified level
-## What it will do
-1. Create an in-depth character (armor class, spell slots, attack rolls, etc)
-2. Allow users to add Homebrew races, classes, feats, etc.
-## Things undecided
-1. If it will be a Web App or downloadable
-2. If it will save the characters or just give the option of printing it out
 
 ### Suggestions for useful utilities are welcome and should be opened as an issue.
 
