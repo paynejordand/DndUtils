@@ -13,7 +13,6 @@ namespace DndUtils
             //?? Sums
             List<int> sums = new List<int>();
 
-            List<List<int>> stats = new List<List<int>>();
 
             //?? Loops, Certain Values
             do
@@ -40,9 +39,6 @@ namespace DndUtils
 
                     // Add to the list of sums.
                     sums.Add(stat.Sum());
-
-                    // Add to list of stats.
-                    stats.Add(stat);
                 }
             } while (sums.Sum() < 70 || sums.Max() < 15);
 
@@ -52,7 +48,7 @@ namespace DndUtils
         public static int RollDie(int maxValue)
         {
             var rand = new Random();
-            return rand.Next(1, maxValue + 1);
+            return rand.Next(1, maxValue);
         }
     }
 }
