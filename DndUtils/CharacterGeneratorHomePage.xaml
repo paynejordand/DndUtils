@@ -15,6 +15,5 @@
         <TextBox Name="lCharacterLevel" HorizontalAlignment="Left" Height="19.697" Margin="420.364,54.545,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174.242" Text="Enter a number 1-20"/>
         <Button Click="RandomCharacter" Content="Random" HorizontalAlignment="Left" Height="70.5" Margin="36.364,229.5,0,0" VerticalAlignment="Top" Width="174.242"/>
         <Button Click="CustomCharacter" Content="Custom" HorizontalAlignment="Left" Height="70.5" Margin="420.364,229.5,0,0" VerticalAlignment="Top" Width="174.242"/>
-
     </Grid>
 </Page>
