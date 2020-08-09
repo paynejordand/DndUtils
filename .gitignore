@@ -350,5 +350,4 @@ MigrationBackup/
 .ionide/
 
 # Conforming to SRD
-DndUtils/CharacterGenerator/Secrets/
-DndUtilsGUI/CharacterGenerator/Secrets/
+DndUtils/CharacterGenerator/Data/Secrets/
