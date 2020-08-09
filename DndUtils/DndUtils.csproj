@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="CharacterSheet.jpg" />
+    <Resource Include="CharacterGenerator\Pages\CharacterSheet.jpg" />
   </ItemGroup>
 
 </Project>
