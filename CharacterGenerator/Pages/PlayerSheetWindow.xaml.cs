@@ -3,6 +3,7 @@ using DndUtils.CharacterGenerator.Feat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -111,6 +112,26 @@ namespace DndUtils
                 profText += $"{prof}, ";
             }
             OtherProfs.Text = profText;
+        }
+
+        private void SaveCharacter(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog
+            {
+                PrintQueue = new PrintQueue(new PrintServer(), "Microsoft Print to PDF")
+            };
+            printDialog.PrintTicket.PageOrientation = PageOrientation.Portrait;
+            printDialog.PrintTicket.PageScalingFactor = 100;
+            printDialog.PrintVisual(PlayerSheet, cc.GetPlayerName());
+        }
+
+        private void PrintCharacter(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if(printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(PlayerSheet, cc.GetPlayerName());
+            }
         }
     }
 }

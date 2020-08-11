@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CharacterGenerator\**" />
+    <EmbeddedResource Remove="CharacterGenerator\**" />
+    <None Remove="CharacterGenerator\**" />
+    <Page Remove="CharacterGenerator\**" />
+  </ItemGroup>
+    <ItemGroup>
+		<Resource Include="Pages\CharacterSheet.jpg" />
+	</ItemGroup>
+
+</Project>

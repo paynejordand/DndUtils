@@ -6,10 +6,16 @@
         xmlns:local="clr-namespace:DndUtils"
         mc:Ignorable="d"
         Title="PlayerSheetHome" Height="1056" Width="816">
+
     <Grid>
-        <ScrollViewer>
-            <Canvas Height="1056" Width="816">
-                <ScrollBar Visibility="Visible"/>
+        <Menu Panel.ZIndex="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50">
+            <MenuItem Header="File" Width="50">
+                <MenuItem Header="_Save" InputGestureText="Ctrl+S" Click="SaveCharacter"/>
+                <MenuItem Header="_Print" InputGestureText="Ctrl+P" Click="PrintCharacter"/>
+            </MenuItem>
+        </Menu>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+            <Canvas x:Name="PlayerSheet" Height="1056" Width="816">
                 <Image Source="CharacterSheet.jpg" Height="1056" Width="816"/>
                 <TextBlock Name="PlayerName" Height="30" TextWrapping="Wrap" Width="194" Canvas.Left="68" Canvas.Top="79"/>
                 <TextBlock Name="ClassLevel" Height="21" TextWrapping="Wrap" Width="127" Canvas.Left="359" Canvas.Top="61"/>
