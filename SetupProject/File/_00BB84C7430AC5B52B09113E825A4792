@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "DndUtils/1.0.0": {
+        "dependencies": {
+          "CharacterGenerator": "1.0.0"
+        },
+        "runtime": {
+          "DndUtils.dll": {}
+        }
+      },
+      "CharacterGenerator/1.0.0": {
+        "runtime": {
+          "CharacterGenerator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DndUtils/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CharacterGenerator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
