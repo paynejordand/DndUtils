@@ -1,18 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<Platform>AnyCPU</Platform>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<OutputPath>bin\Release\</OutputPath>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<Platform>AnyCPU</Platform>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<OutputPath>bin\Debug\</OutputPath>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="CharacterGenerator\**" />
-    <EmbeddedResource Remove="CharacterGenerator\**" />
-    <None Remove="CharacterGenerator\**" />
-    <Page Remove="CharacterGenerator\**" />
-  </ItemGroup>
-    <ItemGroup>
+	<ItemGroup>
 		<Resource Include="Pages\CharacterSheet.jpg" />
+		<Compile Include="*.cs"/>
+		<Compile Include="Data\**\*.cs" />
+		<Compile Include="Pages\*.xaml.cs" />
 	</ItemGroup>
+	
+	<Target Name="Build">
+		<Message Text="$(OutputPath)" />
+		<Csc Sources="@(Compile)" />
+	</Target>
 
 </Project>
