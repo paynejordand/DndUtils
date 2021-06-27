@@ -18,9 +18,13 @@
 
 	<ItemGroup>
 		<Resource Include="Pages\CharacterSheet.jpg" />
-		<Compile Include="*.cs"/>
+		<Compile Include="*.cs" />
 		<Compile Include="Data\**\*.cs" />
 		<Compile Include="Pages\*.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.2" />
 	</ItemGroup>
 	
 	<Target Name="Build">
